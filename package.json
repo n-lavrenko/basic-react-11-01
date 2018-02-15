@@ -24,6 +24,8 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.9.1"
   },

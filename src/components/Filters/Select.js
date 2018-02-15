@@ -1,34 +1,32 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import Select from 'react-select'
-
 import 'react-select/dist/react-select.css'
+import { connect } from "react-redux";
+import { filterTitle } from '../../AC';
+
 
 class SelectFilter extends Component {
-    static propTypes = {
-        articles: PropTypes.array.isRequired
-    };
-
-    state = {
-        selected: null
-    }
-
-    handleChange = selected => this.setState({ selected })
-
-    render() {
-        const { articles } = this.props
-        const options = articles.map(article => ({
-            label: article.title,
-            value: article.id
-        }))
-
-        return <Select
-            options={options}
-            value={this.state.selected}
-            onChange={this.handleChange}
-            multi
-        />
-    }
+  
+  // handleChange = selected => this.setState({ selected })
+  
+  render() {
+    const { articles, selectedArticles, filterTitle } = this.props
+    const options = articles.map(article => ({
+      label: article.title,
+      value: article.id
+    }))
+    
+    return <Select
+      options={ options }
+      value={ selectedArticles }
+      onChange={ (selected) => filterTitle(selected) }
+      multi
+    />
+  }
 }
 
-export default SelectFilter
+export default connect(state => ({
+  articles: state.articles,
+  selectedArticles: state.filter.selectedArticles
+}), {filterTitle})
+(SelectFilter)
