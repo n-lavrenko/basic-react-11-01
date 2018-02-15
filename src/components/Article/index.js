@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import { findDOMNode } from 'react-dom'
 import PropTypes from 'prop-types'
 import CSSTransition from 'react-addons-css-transition-group'
@@ -17,10 +17,20 @@ class Article extends PureComponent {
     }).isRequired,
     isOpen: PropTypes.bool,
     toggleOpen: PropTypes.func
-  }
+  };
+  handleDelete = () => {
+    const { deleteArticle, article } = this.props;
+    deleteArticle(article.id)
+  };
+  increment = () => this.setState({
+    count: this.state.count + 1
+  });
+  setTitleRef = (titleRef) => {
+    this.titleRef = titleRef
+  };
   
   constructor(props) {
-    super(props)
+    super(props);
     
     this.state = {
       foo: 'bar',
@@ -29,14 +39,13 @@ class Article extends PureComponent {
   }
   
   render() {
-    console.log('---', 'rerendering')
-    const { article, isOpen, toggleOpen } = this.props
+    const { article, isOpen, toggleOpen } = this.props;
     const body = isOpen && (
       <div>
         <section>{ article.text }</section>
         <CommentList comments={ article.comments } ref={ this.setCommentsRef } key={ this.state.count }/>
       </div>
-    )
+    );
     return (
       <div>
         <h2 ref={ this.setTitleRef } onClick={ this.increment }>
@@ -61,20 +70,6 @@ class Article extends PureComponent {
         <h3>creation date: { (new Date(article.date)).toDateString() }</h3>
       </div>
     )
-  }
-  
-  handleDelete = () => {
-    const { deleteArticle, article } = this.props
-    deleteArticle(article.id)
-  }
-  
-  increment = () => this.setState({
-    count: this.state.count + 1
-  })
-  
-  setTitleRef = (titleRef) => {
-    this.titleRef = titleRef
-    console.log('---', titleRef)
   }
   
   setCommentsRef = commentsRef => {

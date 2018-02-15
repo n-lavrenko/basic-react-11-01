@@ -10,16 +10,16 @@ class SelectFilter extends Component {
   // handleChange = selected => this.setState({ selected })
   
   render() {
-    const { articles, selectedArticles, filterTitle } = this.props
+    const { articles, selectedArticles, filterTitle } = this.props;
     const options = articles.map(article => ({
       label: article.title,
       value: article.id
-    }))
+    }));
     
     return <Select
       options={ options }
       value={ selectedArticles }
-      onChange={ (selected) => filterTitle(selected) }
+      onChange={ (selected) => filterTitle(selected.map(option => option.value)) }
       multi
     />
   }
