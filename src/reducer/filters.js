@@ -1,7 +1,7 @@
 import { DELETE_ARTICLE, FILTER_DATE, FILTER_TITLE } from '../constants'
 
 
-export const initialtState = {
+const initialtState = {
   selectedArticles: [],
   selectedDates: {
     from: null,
