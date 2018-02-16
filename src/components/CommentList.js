@@ -32,7 +32,7 @@ class CommentList extends Component {
   
       const body = comments.length ? (
             <ul>
-              { comments.map(comment => <li key={ comment.id }><Comment id={ comment.id }/></li>) }
+              { comments.map(id => <li key={ id }><Comment id={ id }/></li>) }
             </ul>
         ) : <h3>No comments yet</h3>;
 

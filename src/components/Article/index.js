@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import CommentList from '../CommentList'
 import { deleteArticle } from '../../AC'
 import './style.css'
+import { articlesSelectorFactory } from '../../selectors';
 
 
 class Article extends PureComponent {
@@ -18,13 +19,16 @@ class Article extends PureComponent {
     isOpen: PropTypes.bool,
     toggleOpen: PropTypes.func
   };
+  
   handleDelete = () => {
     const { deleteArticle, article } = this.props;
     deleteArticle(article.id)
   };
+  
   increment = () => this.setState({
     count: this.state.count + 1
   });
+  
   setTitleRef = (titleRef) => {
     this.titleRef = titleRef
   };
@@ -83,4 +87,15 @@ class Article extends PureComponent {
   
 }
 
-export default connect(null, { deleteArticle })(Article)
+const mapToStateProps = () => {
+  return (state, ownProps) => {
+    const selectorArticle = articlesSelectorFactory();
+    
+    return {
+      article: selectorArticle(state, ownProps)
+    }
+    
+  }
+}
+
+export default connect(mapToStateProps, { deleteArticle })(Article)

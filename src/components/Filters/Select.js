@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { filterTitle } from '../../AC';
 
 
@@ -11,9 +11,9 @@ class SelectFilter extends Component {
   
   render() {
     const { articles, selectedArticles, filterTitle } = this.props;
-    const options = articles.map(article => ({
-      label: article.title,
-      value: article.id
+    const options = Object.keys(articles).map(id => ({
+      label: articles[id].title,
+      value: articles[id].id
     }));
     
     return <Select
@@ -28,5 +28,5 @@ class SelectFilter extends Component {
 export default connect(state => ({
   articles: state.articles,
   selectedArticles: state.filter.selectedArticles
-}), {filterTitle})
+}), { filterTitle })
 (SelectFilter)
