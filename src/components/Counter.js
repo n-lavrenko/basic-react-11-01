@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import {increment} from '../AC'
+import { connect } from 'react-redux'
+import { increment } from '../AC'
+
 
 class Counter extends Component {
-    static propTypes = {
-
-    };
-
     render() {
         return (
             <div>
@@ -16,13 +13,13 @@ class Counter extends Component {
     }
 
     handleIncrement = () => {
-        const action = increment()
+      const action = increment();
         this.props.dispatch(action)
     }
 }
 
 const mapStateToProps = (storeState) => ({
     count: storeState.counter
-})
+});
 
 export default connect(mapStateToProps)(Counter)
