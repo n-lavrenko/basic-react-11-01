@@ -1,4 +1,4 @@
-import { INCREMENT, DELETE_ARTICLE, FILTER_DATE, FILTER_TITLE } from '../constants'
+import { ADD_COMMENT, DELETE_ARTICLE, FILTER_DATE, FILTER_TITLE, INCREMENT } from '../constants'
 
 
 export function increment() {
@@ -25,5 +25,16 @@ export function filterTitle(selectedArticles) {
   return {
     type: FILTER_TITLE,
     payload: { selectedArticles }
+  }
+}
+
+export function addComment(articleId, user, text) {
+  return {
+    type: ADD_COMMENT,
+    payload: {
+      articleId,
+      user,
+      text
+    }
   }
 }
