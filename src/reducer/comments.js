@@ -1,0 +1,1 @@
+import { normolizedComments } from '../fixtures'
