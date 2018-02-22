@@ -1,11 +1,11 @@
-import {createStore, applyMiddleware, compose} from 'redux'
+import { applyMiddleware, compose, createStore } from 'redux'
 import rootReducer from '../reducer'
-import logger from '../middlewares/logger'
 import randomId from '../middlewares/randomId'
 import api from '../middlewares/api'
 import thunk from 'redux-thunk'
-import {routerMiddleware} from 'react-router-redux'
+import { routerMiddleware } from 'react-router-redux'
 import history from '../history'
+
 
 const composeEnhancers =
     typeof window === 'object' &&
@@ -15,7 +15,7 @@ const composeEnhancers =
         }) : compose
 
 const enhancer = composeEnhancers(
-    applyMiddleware(thunk, api, randomId, routerMiddleware(history), logger)
+  applyMiddleware(thunk, api, randomId, routerMiddleware(history), /*logger*/)
 )
 const store = createStore(rootReducer, enhancer)
 

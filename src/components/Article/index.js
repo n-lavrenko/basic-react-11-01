@@ -1,13 +1,13 @@
-import React, {Component} from 'react'
-import {findDOMNode} from 'react-dom'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CSSTransition from 'react-addons-css-transition-group'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import CommentList from '../CommentList'
 import Loader from '../common/Loader'
-import {deleteArticle, loadArticle} from '../../AC'
+import { deleteArticle, loadArticle } from '../../AC'
 import { articleSelector } from '../../selectors'
 import './style.css'
+
 
 class Article extends Component {
     static propTypes = {
@@ -37,7 +37,6 @@ class Article extends Component {
     }
 
     render() {
-        console.log('---', 4)
         const {article, isOpen, toggleOpen} = this.props
         if (!article) return null
 

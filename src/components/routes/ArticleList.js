@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ArticleList from '../ArticleList'
 import Article from '../Article'
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
+
 
 class ArticleListPage extends Component {
     static propTypes = {
@@ -9,7 +10,6 @@ class ArticleListPage extends Component {
     };
 
     render() {
-        console.log('---', 2)
         return (
             <div>
                 <h2>Article list:</h2>
@@ -21,7 +21,6 @@ class ArticleListPage extends Component {
 
     getArticle = ({ match }) => {
         if (!match) return <h2>Please select an article</h2>
-        console.log('---', 3)
         return <Article id = {match.params.id} isOpen key = {match.params.id} />
     }
 }

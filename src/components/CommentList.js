@@ -1,11 +1,12 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Comment from './Comment'
 import PropTypes from 'prop-types'
 import toggleOpen from '../decorators/toggleOpen'
 import CommentForm from './CommentForm'
 import Loader from './common/Loader'
-import {connect} from 'react-redux'
-import {loadArticleComments} from '../AC'
+import { connect } from 'react-redux'
+import { loadArticleComments } from '../AC'
+
 
 class CommentList extends Component {
     static propTypes = {
@@ -28,7 +29,6 @@ class CommentList extends Component {
     }
 
     render() {
-        console.log('---', 'context: ', this.context)
         const {isOpen, toggleOpen} = this.props
         const text = isOpen ? 'hide comments' : 'show comments'
         return (

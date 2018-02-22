@@ -1,12 +1,14 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ArticleListPage from './routes/ArticleList'
 import UserForm from './UserForm'
 import FiltersPage from './routes/Filters'
 import CounterPage from './routes/Counter'
 import CommentsPage from './routes/CommentsPage'
-import { Route, Redirect, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import Menu, { MenuItem } from './Menu'
+import LangSwitcher from '../i18n/LangSwitcher';
+
 
 class App extends Component {
     static childContextTypes = {
@@ -26,15 +28,15 @@ class App extends Component {
     handleUserChange = username => this.setState({ username })
 
     render() {
-        console.log('---', 1)
         return (
             <div>
                 <h1>App name</h1>
+              <LangSwitcher/>
                 <Menu>
-                    <MenuItem to = "/articles">Articles</MenuItem>
-                    <MenuItem to = "/filters">Filters</MenuItem>
-                    <MenuItem to = "/counter">Counter</MenuItem>
-                    <MenuItem to = "/comments">Comments</MenuItem>
+                  <MenuItem to="/articles">articles</MenuItem>
+                  <MenuItem to="/filters">filters</MenuItem>
+                  <MenuItem to="/counter">counter</MenuItem>
+                  <MenuItem to="/comments">comments</MenuItem>
                 </Menu>
                 <UserForm value = {this.state.username} onChange = {this.handleUserChange}/>
                 <Switch>
